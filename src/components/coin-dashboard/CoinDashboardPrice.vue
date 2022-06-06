@@ -19,7 +19,7 @@
           }"
           data-test="priceChangeIcon"
         ></i>
-        {{ Math.abs(props.priceChangePercentage24h) }}%
+        {{ Math.abs(props.priceChangePercentage24h).toFixed(1) }}%
       </span>
     </h3>
   </div>
