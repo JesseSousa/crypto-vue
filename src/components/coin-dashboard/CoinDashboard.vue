@@ -12,6 +12,14 @@
         :priceChangePercentage24h="coin.priceChangePercentage24h"
       />
     </div>
+    <!-- CoinDashboard Stats -->
+    <CoinDashboardStats
+      :marketCap="coin.marketCap"
+      :low24h="coin.low24h"
+      :high24h="coin.high24h"
+      :totalVolume="coin.totalVolume"
+      :circulatingSupply="coin.circulatingSupply"
+    />
   </div>
 </template>
 
@@ -20,6 +28,7 @@ import { useCoinData } from '../../composables/coinData';
 
 import CoinDashboardTitle from './CoinDashboardTitle.vue';
 import CoinDashboardPrice from './CoinDashboardPrice.vue';
+import CoinDashboardStats from './CoinDashboardStats.vue';
 
 const coin = useCoinData('bitcoin');
 </script>
