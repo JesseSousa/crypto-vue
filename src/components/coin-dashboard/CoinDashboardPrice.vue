@@ -4,15 +4,34 @@
     <h3 class="font-semibold text-gray-800 text-2xl flex items-center">
       ${{ props.price }}
       <span
-        class="text-base bg-gray-200 p-1 text-green-600 rounded flex items-center justify-around ml-2"
+        class="text-base bg-gray-200 p-1 rounded flex items-center justify-around ml-2"
+        :class="{
+          'text-green-600': priceChangeIsPositive,
+          'text-red-600': !priceChangeIsPositive,
+        }"
       >
-        <i class="fa-solid fa-caret-up mr-1 text-2xl"></i>
-        {{ props.priceChangePercentage24h }}%
+        <i
+          class="fa-solid mr-1 text-2xl"
+          :class="{
+            'fa-caret-up': priceChangeIsPositive,
+            'fa-caret-down': !priceChangeIsPositive,
+          }"
+        ></i>
+        {{ Math.abs(props.priceChangePercentage24h) }}%
       </span>
     </h3>
   </div>
 </template>
 
 <script setup>
+import { ref, onUpdated } from 'vue';
 const props = defineProps(['price', 'priceChangePercentage24h']);
+
+const priceChangeIsPositive = ref(
+  parseFloat(props.priceChangePercentage24h) >= 0
+);
+
+onUpdated(() => {
+  priceChangeIsPositive.value = parseFloat(props.priceChangePercentage24h) >= 0;
+});
 </script>
