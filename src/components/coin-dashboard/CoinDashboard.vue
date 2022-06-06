@@ -20,6 +20,8 @@
       :totalVolume="coin.totalVolume"
       :circulatingSupply="coin.circulatingSupply"
     />
+    <!-- CoinDashboard Description -->
+    <CoinDashboardDescription :description="coin.description" />
   </div>
 </template>
 
@@ -29,6 +31,7 @@ import { useCoinData } from '../../composables/coinData';
 import CoinDashboardTitle from './CoinDashboardTitle.vue';
 import CoinDashboardPrice from './CoinDashboardPrice.vue';
 import CoinDashboardStats from './CoinDashboardStats.vue';
+import CoinDashboardDescription from './CoinDescription.vue';
 
 const coin = useCoinData('bitcoin');
 </script>
