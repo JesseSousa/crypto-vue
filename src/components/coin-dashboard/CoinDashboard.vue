@@ -1,14 +1,17 @@
 <template>
   <div class="w-full p-4 md:px-8 md:py-2">
-    <CoinDashboardTitle
-      :name="coin.name"
-      :image="coin.image"
-      :symbol="coin.symbol"
-    />
-    <CoinDashboardPrice
-      :price="coin.price"
-      :priceChangePercentage24h="coin.priceChangePercentage24h"
-    />
+    <!-- CoinDashboard Header -->
+    <div class="flex flex-col md:flex-row md:justify-between">
+      <CoinDashboardTitle
+        :name="coin.name"
+        :image="coin.image"
+        :symbol="coin.symbol"
+      />
+      <CoinDashboardPrice
+        :price="coin.price"
+        :priceChangePercentage24h="coin.priceChangePercentage24h"
+      />
+    </div>
   </div>
 </template>
 
