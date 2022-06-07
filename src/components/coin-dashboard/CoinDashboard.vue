@@ -22,6 +22,9 @@
     />
     <!-- CoinDashboard Description -->
     <CoinDashboardDescription :description="coin.description" />
+
+    <!-- CoinDashboard History -->
+    <CoinDashboardHistory :coinId="coinId" />
   </div>
 </template>
 
@@ -33,6 +36,7 @@ import CoinDashboardTitle from './CoinDashboardTitle.vue';
 import CoinDashboardPrice from './CoinDashboardPrice.vue';
 import CoinDashboardStats from './CoinDashboardStats.vue';
 import CoinDashboardDescription from './CoinDescription.vue';
+import CoinDashboardHistory from './CoinDashboardHistory.vue';
 
 const coinId = ref('bitcoin');
 const coin = useCoinData(coinId.value);
