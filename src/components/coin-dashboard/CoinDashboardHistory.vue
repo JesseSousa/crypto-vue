@@ -23,6 +23,12 @@
         Get Data
       </button>
     </form>
+    <CoinDashboardHistoryData
+      :price="historicalData.price"
+      :marketCap="historicalData.marketCap"
+      :date="historicalData.date"
+      v-if="hasData"
+    />
   </div>
 </template>
 
@@ -30,6 +36,7 @@
 import { ref } from 'vue';
 
 import getHistoricalDataFromApi from '../../utils/getHistoricalDataFromApi';
+import CoinDashboardHistoryData from './CoinDashboardHistoryData.vue';
 
 const props = defineProps(['coinId']);
 
