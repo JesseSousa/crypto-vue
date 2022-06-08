@@ -34,6 +34,7 @@ import getHistoricalDataFromApi from '../../utils/getHistoricalDataFromApi';
 const props = defineProps(['coinId']);
 
 const historicalData = ref({});
+const hasData = ref(false);
 const date = ref('');
 
 // Today's date in format YYYY-MM-DD
@@ -46,5 +47,7 @@ const getData = async () => {
     props.coinId,
     `${day}-${month}-${year}`
   );
+
+  hasData.value = true;
 };
 </script>
