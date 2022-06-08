@@ -7,4 +7,5 @@ export default defineConfig({
     environment: 'happy-dom',
   },
   plugins: [vue()],
+  base: '/crypto-vue/',
 });
