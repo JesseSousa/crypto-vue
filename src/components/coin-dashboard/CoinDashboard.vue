@@ -46,7 +46,7 @@ const route = useRoute();
 let idFromParams = route.params.coinId;
 
 // Check if coinId from URL parameter is supported
-let idIsSupported = supportedCoins.some((coin) => coin.id !== idFromParams);
+let idIsSupported = supportedCoins.some((coin) => coin.id === idFromParams);
 
 // If id from params is not supported defaults to 'bitcoin'
 const coinId = ref(idIsSupported ? idFromParams : 'bitcoin');
