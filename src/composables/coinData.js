@@ -1,8 +1,15 @@
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, watch } from 'vue';
 
 import getDataFromApi from '../utils/getDataFromApi';
 
-export const useCoinData = (coinId) => {
+export const useCoinData = (coinIdRef) => {
+  let coinId = coinIdRef.value;
+
+  watch(coinIdRef, async () => {
+    coinId = coinIdRef.value;
+    coinData.value = await getDataFromApi(coinId);
+  });
+
   const coinData = ref({});
   let mounted = false;
 
