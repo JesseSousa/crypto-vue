@@ -30,7 +30,9 @@
 
 <script setup>
 import { ref } from 'vue';
+import { useRoute } from 'vue-router';
 import { useCoinData } from '../../composables/coinData';
+import supportedCoins from '../../utils/supportedCoins';
 
 import CoinDashboardTitle from './CoinDashboardTitle.vue';
 import CoinDashboardPrice from './CoinDashboardPrice.vue';
@@ -38,6 +40,16 @@ import CoinDashboardStats from './CoinDashboardStats.vue';
 import CoinDashboardDescription from './CoinDescription.vue';
 import CoinDashboardHistory from './CoinDashboardHistory.vue';
 
-const coinId = ref('bitcoin');
+const route = useRoute();
+
+// Get Route from URL params
+let idFromParams = route.params.coinId;
+
+// Check if coinId from URL parameter is supported
+let idIsSupported = supportedCoins.some((coin) => coin.id !== idFromParams);
+
+// If id from params is not supported defaults to 'bitcoin'
+const coinId = ref(idIsSupported ? idFromParams : 'bitcoin');
+
 const coin = useCoinData(coinId.value);
 </script>
