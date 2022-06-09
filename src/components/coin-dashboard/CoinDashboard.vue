@@ -29,7 +29,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { inject } from 'vue';
 import { useCoinData } from '../../composables/coinData';
 
 import CoinDashboardTitle from './CoinDashboardTitle.vue';
@@ -38,6 +38,6 @@ import CoinDashboardStats from './CoinDashboardStats.vue';
 import CoinDashboardDescription from './CoinDescription.vue';
 import CoinDashboardHistory from './CoinDashboardHistory.vue';
 
-const coinId = ref('bitcoin');
-const coin = useCoinData(coinId.value);
+const coinId = inject('coinId');
+const coin = useCoinData(coinId);
 </script>
