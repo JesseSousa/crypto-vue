@@ -33,19 +33,30 @@
 </template>
 
 <script setup>
-import { ref } from 'vue';
+import { ref, watch } from 'vue';
 
 import getHistoricalDataFromApi from '../../utils/getHistoricalDataFromApi';
 import CoinDashboardHistoryData from './CoinDashboardHistoryData.vue';
 
 const props = defineProps(['coinId']);
 
-const historicalData = ref({});
-const hasData = ref(false);
+// Today's date in format YYYY-MM-DD
+// used in date input max attribute
+const today = new Date().toLocaleDateString('en-ca');
+
+// V-model for date input
 const date = ref('');
 
-// Today's date in format YYYY-MM-DD
-const today = new Date().toLocaleDateString('en-ca');
+const historicalData = ref({});
+const hasData = ref(false);
+
+watch(
+  () => props.coinId,
+  (newCoinId) => {
+    hasData.value = false;
+    getData(newCoinId);
+  }
+);
 
 const getData = async () => {
   const [year, month, day] = date.value.split('-');
